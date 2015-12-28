@@ -1,0 +1,14 @@
+DEPENDENCIES
+  apt
+  aptly
+  ele-apt
+    path: .
+    metadata: true
+
+GRAPH
+  apt (2.9.2)
+  aptly (0.2.6)
+    apt (>= 0.0.0)
+  ele-apt (0.1.0)
+    apt (>= 0.0.0)
+    aptly (>= 0.0.0)
