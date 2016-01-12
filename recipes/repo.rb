@@ -16,7 +16,7 @@ directory '/data/aptly' do
   recursive true
 end
 
-apt_repo 'aptly' do
+aptly_repo 'aptly' do
   action :add
   directory '/data/aptly'
 end
