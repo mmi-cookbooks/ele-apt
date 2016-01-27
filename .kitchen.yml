@@ -22,3 +22,6 @@ suites:
   - name: default
     run_list:
       - recipe[ele-apt]
+  - name: repo
+    run_list:
+      - recipe[ele-apt::repo]
