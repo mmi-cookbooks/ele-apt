@@ -10,6 +10,15 @@ driver:
   require_chef_omnibus: latest
   server_name: ci-<%= ENV['CIRCLE_PROJECT_REPONAME'] %>-<%= ENV['CIRCLE_BUILD_NUM'] %>
   wait_for: 1200
+
 platforms:
    - name: default-ubuntu-1404
+
+suites:
+  - name: default
+    run_list:
+      - recipe[ele-apt::default]
+  - name: repo
+    run_list:
+      - recipe[ele-apt::repo]
 
