@@ -14,7 +14,11 @@ describe 'ele-apt::repo' do
     expect(chef_run).to create_directory('/opt/aptly')
   end
 
+  it 'creates a directory with an explicit action' do
+    expect(chef_run).to create_directory('/data/packages')
+  end
+
   it 'creates an aptly repository' do
-    expect(chef_run).to add_aptly_repo('aptly')
+    expect(chef_run).to add_aptly_repo('aptly-maas')
   end
 end

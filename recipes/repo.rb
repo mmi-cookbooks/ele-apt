@@ -9,7 +9,7 @@
 
 # node.set['aptly']['ppadistributorid'] = "Ubuntu"
 # node.set['aptly']['uri'] = 'http://intapt.cm.k1k.me/'
-node.set['aptly']['dist'] = 'trusty'
+# node.set['aptly']['dist'] = 'trusty'
 
 include_recipe 'aptly::install'
 
@@ -21,12 +21,16 @@ directory packagedir do
   group node['aptly']['group']
 end
 
-aptly_repo 'aptly' do
-  action :add
-  comment 'Custom packages for MAAS'
-  directory packagedir
+aptly_repo 'aptly-maas' do
+  action :create
+  comment 'Custom packages for Rackspace Monitoring'
   component node['aptly']['components'].first
-  distribution node['aptly']['dist']
+  distribution 'Rackspace Monitoring'
+end
+
+aptly_repo 'aptly-maas' do
+  action :add
+  directory packagedir
 end
 
 # apache virtualhost
