@@ -10,7 +10,7 @@ describe 'ele-apt::default' do
     end.converge(described_recipe)
   end
 
-  # it 'adds an apt repository' do
-  #   expect(chef_run).to create_apt_repository('intapt')
-  # end
+  it 'adds an apt repository' do
+    expect(chef_run).to add_apt_repository('intapt')
+  end
 end

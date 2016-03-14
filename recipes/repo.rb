@@ -7,16 +7,30 @@
 # All rights reserved - Do Not Redistribute
 #
 
-node.set['aptly']['uri'] = 'http://intapt.cm.k1k.me/'
-node.set['aptly']['dist'] = 'trusty'
+# node.set['aptly']['ppadistributorid'] = "Ubuntu"
+# node.set['aptly']['uri'] = 'http://intapt.cm.k1k.me/'
+# node.set['aptly']['dist'] = 'trusty'
 
-include_recipe 'aptly'
+include_recipe 'aptly::install'
 
-directory '/data/aptly' do
+packagedir = '/data/packages'
+
+directory packagedir do
   recursive true
+  owner node['aptly']['user']
+  group node['aptly']['group']
 end
 
-aptly_repo 'aptly' do
-  action :add
-  directory '/data/aptly'
+aptly_repo 'aptly-maas' do
+  action :create
+  comment 'Custom packages for Rackspace Monitoring'
+  component node['aptly']['components'].first
+  distribution 'Rackspace Monitoring'
 end
+
+aptly_repo 'aptly-maas' do
+  action :add
+  directory packagedir
+end
+
+# apache virtualhost
