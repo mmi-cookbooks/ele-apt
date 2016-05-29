@@ -15,3 +15,11 @@ apt_repository 'intapt' do
   key 'intapt.key'
   action :add
 end
+
+apt_repository 'aptly' do
+  uri 'http://apt.cm.k1k.me/'
+  distribution node['lsb']['codename']
+  components ['main']
+  key 'aptly.key'
+  action :add
+end
