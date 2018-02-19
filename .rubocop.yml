@@ -1,7 +1,12 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   Exclude:
   - .kitchen
   - vendor/**/*
+
+Metrics/BlockLength:
+  Max: 30
 
 Metrics/LineLength:
   Max: 120
